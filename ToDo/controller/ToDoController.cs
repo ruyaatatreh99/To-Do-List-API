@@ -55,7 +55,7 @@ namespace ToDo.controller
         {
             try
             {
-               List<Tasks> taskes = _ToDo.viewAlltaskes();
+               var taskes = _ToDo.viewAlltaskes();
                 return Ok(new { tskes = taskes });
             }
             catch (Exception)

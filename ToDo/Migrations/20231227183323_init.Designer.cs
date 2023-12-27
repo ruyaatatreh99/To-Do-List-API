@@ -12,8 +12,8 @@ using ToDo.Model;
 namespace ToDo.Migrations
 {
     [DbContext(typeof(MyDataContext))]
-    [Migration("20231226182831_init")]
-    partial class Init
+    [Migration("20231227183323_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,23 @@ namespace ToDo.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ToDo.Model.Catogry", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Catogry");
+                });
 
             modelBuilder.Entity("ToDo.Model.Tasks", b =>
                 {

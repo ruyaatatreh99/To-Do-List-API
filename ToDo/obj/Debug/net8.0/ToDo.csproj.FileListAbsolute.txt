@@ -136,3 +136,4 @@ C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ToDo.genruntimeconfig.cach
 C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ref\ToDo.dll
 C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
 C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
+C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ToDo.sourcelink.json

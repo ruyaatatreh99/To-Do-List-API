@@ -12,5 +12,6 @@ namespace ToDo.Model
         public MyDataContext(DbContextOptions<MyDataContext> options) :base(options) { } 
         
         public DbSet<Tasks> Tasks { get; set;}
+        public DbSet<Catogry> Catogry { get; set; }
     }
 }

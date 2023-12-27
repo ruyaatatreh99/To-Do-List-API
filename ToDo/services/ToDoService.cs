@@ -62,10 +62,7 @@ namespace ToDo.services
             List<Tasks> TasksList;
             try
             {
-
-
-                TasksList = _db.Set<Tasks>().ToList();
-                TasksList.OrderByDescending(x => x.ID);
+                TasksList = _db.Tasks.OrderBy(task => task.IsCompleted).OrderBy(task => task.Category).ToList();
 
             }
             catch (Exception)
