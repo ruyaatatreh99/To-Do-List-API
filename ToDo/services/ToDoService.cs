@@ -27,8 +27,6 @@ namespace ToDo.services
             _db.Tasks.Add(tasks);
             _db.SaveChanges();
             return tasks;
-
-
         }
        
         public void deletetask(int id)

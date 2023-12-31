@@ -18,7 +18,9 @@ C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.EntityFrameworkC
 C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
 C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
 C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.Identity.Client.dll
 C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
@@ -120,6 +122,7 @@ C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ToDo.AssemblyInfo.cs
 C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ToDo.csproj.CoreCompileInputs.cache
 C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ToDo.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ToDo.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ToDo.sourcelink.json
 C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\staticwebassets\msbuild.ToDo.Microsoft.AspNetCore.StaticWebAssets.props
@@ -134,6 +137,3 @@ C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\refint\ToDo.dll
 C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ToDo.pdb
 C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ToDo.genruntimeconfig.cache
 C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ref\ToDo.dll
-C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
-C:\Users\Ruya\source\repos\ToDo\ToDo\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
-C:\Users\Ruya\source\repos\ToDo\ToDo\obj\Debug\net8.0\ToDo.sourcelink.json

@@ -21,7 +21,7 @@ namespace ToDo.Model
 
         [MinLength(1)]
         public string? Description { get; set; }
-        public int? IsCompleted { get; set; }
+        public int IsCompleted { get; set; }
         
         [MinLength(1)]
         public string? Category { get; set; }
