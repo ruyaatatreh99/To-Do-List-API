@@ -5,6 +5,9 @@ using ToDo.services;
 using System.Text;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace ToDo.controller
 {
@@ -17,29 +20,33 @@ namespace ToDo.controller
             _ToDo = ToDo;
 
         }
-
+       
         [Route("tasks/")]
         [HttpPost]
-        public IActionResult createtask([FromBody] Dictionary<string, string> data) {
+        public IActionResult createtask([FromBody] Tasks data) {
             try
             {
-                Tasks ToDoTask = _ToDo.createtask(data["title"], data["description"], Int16.Parse(data["IsCompleted"]), data["Category"]);
+                Tasks ToDoTask = _ToDo.createtask(data.Title,data.Description,data.IsCompleted, data.Category);
                 if (ToDoTask == null) return NotFound(new { errors = "Error in creating Task!!" });
-                else return Ok(new { Task = ToDoTask });
+                else 
+                {
+                    var token = GenerateJwtToken(data.Title);
+                    return Ok(new { Task = ToDoTask, Token = token });
+                }
             }
             catch (Exception)
             {
                 return BadRequest(new { status = 500, message = "Error" });
             }
         }
-
+        [Authorize]
         [Route("tasks/")]
         [HttpPut]
-        public IActionResult updatetask([FromBody] Dictionary<string, string> data,int taskid)
+        public IActionResult updatetask([FromBody] Tasks data, int taskid)
         {
             try
             {
-                Tasks ToDoTask = _ToDo.updatetask(data["title"], data["description"], Int16.Parse(data["IsCompleted"]), data["Category"], taskid);
+                Tasks ToDoTask = _ToDo.updatetask(data.Title, data.Description,data.IsCompleted, data.Category, taskid);
                 if (ToDoTask == null) return NotFound(new { errors = "Error in updating Task!!" });
                 else return Ok(new { Task = ToDoTask });
             }
@@ -48,7 +55,7 @@ namespace ToDo.controller
                 return BadRequest(new { status = 500, message = "Error" });
             }
         }
-        
+        [Authorize]
         [Route("tasks/all")]
         [HttpGet]
         public IActionResult viewAlltaskes()
@@ -63,7 +70,7 @@ namespace ToDo.controller
                 return BadRequest(new { status = 500, message = "Error" });
             }
         }
-        
+        [Authorize]
         [Route("tasks/")]
         [HttpGet]
         public IActionResult viewtask(int taskid)
@@ -79,7 +86,7 @@ namespace ToDo.controller
                 return BadRequest(new { status = 500, message = "Error" });
             }
         }
-
+        [Authorize]
         [Route("tasks/")]
         [HttpDelete]
         public IActionResult deletetask(int taskid)
@@ -95,5 +102,17 @@ namespace ToDo.controller
             }
         }
 
+        private string GenerateJwtToken(string title)
+        { 
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SXkSqsKyNUyvGbnHs7ke2NCq8zQzNLW7mPmHbnZZ"));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken("your-issuer", "your-audience", new[]
+            {
+        new Claim(ClaimTypes.Name, title)
+    }, expires: DateTime.Now.AddMinutes(30), signingCredentials: credentials);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
     }
 }

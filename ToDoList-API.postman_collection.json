@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "e7cac601-d026-495b-90a5-bd33f832950a",
+		"name": "ToDoList-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12963323"
+	},
+	"item": [
+		{
+			"name": "get task by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"    pm.test(\"request have JWT Token\", function () {\r",
+							"        pm.request.to.have.header(\"Authorization\");\r",
+							"    });\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"title\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"description\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"category\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"isCompleted\");\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url-task}}?taskid=7",
+					"host": [
+						"{{url-task}}"
+					],
+					"query": [
+						{
+							"key": "taskid",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all task by catygory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"    pm.test(\"request have JWT Token\", function () {\r",
+							"        pm.request.to.have.header(\"Authorization\");\r",
+							"    });\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"tskes\");\r",
+							"\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url-task}}/all",
+					"host": [
+						"{{url-task}}"
+					],
+					"path": [
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete task task bu ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test('Body matches string', function () {\r",
+							"    pm.expect(pm.response.text()).to.include('');\r",
+							"})\r",
+							"pm.test('Response time is less than 200ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url-task}}?taskid=23",
+					"host": [
+						"{{url-task}}"
+					],
+					"query": [
+						{
+							"key": "taskid",
+							"value": "23"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test('Body matches string', function () {\r",
+							"    pm.expect(pm.response.text()).to.include('task');\r",
+							"    pm.expect(pm.response.text()).to.include('token');\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Body  request matches string\", function () {\r",
+							"    const requestBody = JSON.parse(pm.request.body.raw);\r",
+							"    const requiredKeys = [\"title\", \"description\", \"isCompleted\",\"category\"];\r",
+							"    requiredKeys.forEach(function (key) {\r",
+							"        pm.expect(requestBody).to.have.property(key);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test('Response time is less than 200ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"test token\",\r\n  \"description\": \"jwt\",\r\n  \"isCompleted\": 0,\r\n  \"category\": \"done\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-task}}",
+					"host": [
+						"{{url-task}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test('Body matches string', function () {\r",
+							"    pm.expect(pm.response.text()).to.include('task');\r",
+							"})\r",
+							"pm.test('Response time is less than 200ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 5,\r\n  \"title\": \"Auth token\",\r\n  \"description\": \"JWT type\",\r\n  \"isCompleted\": 0,\r\n  \"category\": \"do\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-task}}?taskid=5",
+					"host": [
+						"{{url-task}}"
+					],
+					"query": [
+						{
+							"key": "taskid",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url-task",
+			"value": "https://localhost:7293/tasks"
+		},
+		{
+			"key": "token",
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVzdCB0b2tlbiIsImV4cCI6MTcwNDE4Mjg4NywiaXNzIjoieW91ci1pc3N1ZXIiLCJhdWQiOiJ5b3VyLWF1ZGllbmNlIn0.1yYZubOmYR7NsGvfPT3oef4Po4qUkELlwDTXBT86H3Q\n"
+		}
+	]
+}
